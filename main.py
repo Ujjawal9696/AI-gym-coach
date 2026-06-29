@@ -153,8 +153,8 @@ def main():
  
     theme = st.session_state.get("theme", "dark")
  
-    load_css(os.path.join(os.getcwd(), "static", "style.css"))
-    inject_local_font(os.path.join(os.getcwd(), "static", "AdobeClean.otf"), "AdobeClean")
+    css_path = os.path.join(os.path.dirname(__file__), "static", "style.css"); load_css(css_path)
+    inject_local_font(os.path.join(os.path.dirname(__file__), "static", "AdobeClean.otf"), "AdobeClean")
     apply_theme(theme)
  
     init_db()
@@ -412,5 +412,7 @@ def main():
  
 if __name__ == "__main__":
     main()
+
+
 
 
