@@ -153,8 +153,9 @@ def main():
  
     theme = st.session_state.get("theme", "dark")
  
-    css_path = os.path.join(os.path.dirname(__file__), "static", "style.css"); load_css(css_path)
-    inject_local_font(os.path.join(os.path.dirname(__file__), "static", "AdobeClean.otf"), "AdobeClean")
+    _base = os.path.dirname(os.path.abspath(__file__))
+    load_css(os.path.join(_base, "static", "style.css"))
+    inject_local_font(os.path.join(_base, "static", "AdobeClean.otf"), "AdobeClean")
     apply_theme(theme)
  
     init_db()
@@ -342,7 +343,6 @@ def main():
             unsafe_allow_html=True,
         )
     else:
-        import os
         is_cloud = os.environ.get("HOME", "").startswith("/home/adminuser")
         if is_cloud:
             st.info("Camera-based pose detection works when running locally. You can still save workouts using End Workout and view your history below.")
@@ -412,7 +412,6 @@ def main():
  
 if __name__ == "__main__":
     main()
-
-
+ 
 
 
